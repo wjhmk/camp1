@@ -1,0 +1,9 @@
+<h1>title:<%= @post.title %></h1>
+<h1>link:<%= @post.link %></h1>
+<h1>description:<%= @post.description %></h1>
+<h1>id:<%= @post.id %></h1>
+
+
+<%= link_to "編集",edit_post_path(@post) %>
+<%= link_to "削除",post_path(@post),method: :delete,data: {confirm:"削除してもいいですか"} %>
+<%= link_to "ホーム",root_path %>

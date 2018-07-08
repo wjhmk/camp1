@@ -1,0 +1,48 @@
+
+<header>
+    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+    <nav>
+        <ul>
+            <li><%= link_to "新規投稿",new_post_path %></li>
+            <li><%= link_to "ユーザー登録",new_user_registration_path %></li>
+            <li><%= link_to "サインイン",new_user_session_path %></li>
+            <li><%= link_to "ログアウト",destroy_user_session_path,method: :delete %></li>
+            <div class="clear"></div>
+        </ul>
+    </nav>
+    <div class="clear"></div>
+</header>
+
+<div id="main">
+    <img src="/assets/main-img.jpg">
+</div>
+
+
+<div id="article_wrap">
+
+    <div id="article_list">
+        <% @posts.each do |post| %>
+            <div>
+                <h2><%= post.id %>:<%= link_to post.title,post %></h2>
+                <p><%= post.description %></p>
+            </div>
+            <% end %>
+    </div>
+
+    <div id="sidebar">
+
+        <h2>★PV数ランキング</h2>
+        <ul>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
+            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>

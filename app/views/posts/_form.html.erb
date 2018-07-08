@@ -1,0 +1,6 @@
+<%= form_for(@post) do |f| %>
+   <p>titl:<%= f.text_field :title %></p>
+   <p>link:<%= f.text_field :link %></p>
+   <p>description:<%= f.text_field :description %></p>
+   <p><%= f.button :submit %></p>
+<% end %>
