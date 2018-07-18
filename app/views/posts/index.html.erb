@@ -34,8 +34,42 @@
         <h2>★PV数ランキング</h2>
         <ul>
             <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（10PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+
+
+
+            <p>--------------------------------------------------</p>
+            <% @ranking_posts.zip(@id_with_hash).each do |ranking_post,pv| %>
+            <p><%= ranking_post.title %>(<%=pv[1].floor %>PV)</p>
+            <% end %>
+
+
+            <p>--------------------------------------------------</p>
+            <% @ranking_posts.each do |ranking_post| %>
+              <li><%= ranking_post.title%>(<%= REDIS.zscore("posts" , ranking_post.id).floor %>PV)</li>
+            <% end %>
+
+
+            <p>--------------------------------------------------</p>
+            <% @ranking_posts.zip(@id_with_hash) do |ranking_post,pv| %>
+              <li><%= ranking_post.title%>(<%= REDIS.zscore("posts" ,pv[0]).floor %>PV)</li>
+            <% end %>
+
+
+            <p>--------------------------------------------------</p>
+            <% @ranking_posts.each do |ranking_post| %>
+            <p><%= ranking_post.title %></p>
+            <% end %>
+
+
+            <p>--------------------------------------------------</p>
+            <% @id_with_hash.each do |key,value| %>
+            <p><%=key %>:<%=value %></p>
+            <% end %>
+
+
+
+
+
         </ul>
     </div>
     <div class="clear"></div>
